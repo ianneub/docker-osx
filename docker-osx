@@ -91,7 +91,6 @@ function help() {
   echo "  vagrant   Issue subcommands directly to the vagrant CLI"
   echo "  ssh       Open SSH console on vagrant box"
   echo "  env       Outputs environment variables for Docker to connect remotely"
-  echo "  shell     Open a shell with Docker VM started and environment set"
   echo ""
 }
 
@@ -240,13 +239,6 @@ case "$1" in
   "")
     help
     exit 0
-    ;;
-  shell)
-    echo "Starting local Docker environment..."
-    start_vm
-    $SHELL
-    echo "Stopping local Docker environment..."
-    exec vagrant halt
     ;;
   env)
     echo "export DOCKER_HOST=$DOCKER_HOST"
