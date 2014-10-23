@@ -217,7 +217,7 @@ case "$1" in
   clear)
     docker kill $(docker ps -q) 2> /dev/null
     docker rm $(docker ps -a -q) 2> /dev/null
-    docker rmi $(docker images -q) 2> /dev/null
+    docker rmi $(docker images | awk '{ if ($1 == "<none>") print $3 }') 2> /dev/null
     ;;
   ssh)
     start_vm
